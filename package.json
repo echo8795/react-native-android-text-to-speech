@@ -1,6 +1,6 @@
 {
   "name": "react-native-android-text-to-speech",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "React Native Text-To-Speech wrapper module for android",
   "main": "index.js",
   "repository": {

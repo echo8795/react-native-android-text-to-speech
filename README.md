@@ -85,12 +85,14 @@ AndroidTextToSpeech.getEnginesInfo();
 to list all the available TTS Engines on the android device.
 Returns a promise with list containing strings of package names of the installed engines.
 
+
 2) Current Engine Info: Use function
 ```js
 AndroidTextToSpeech.getCurrentEngineInfo();
 ```
 to get the name of current TTS Engine being used.
 Returns a promise with string of the package name of currently in use TTS engine.
+
 
 3) All Available Locales: Use function
 ```js
@@ -105,6 +107,7 @@ Returns a promise with an object of the form -
 	coutryName: string;		//Country display name as given by android
 	countryCode: string;	//Country code according to ISO 3166-1 alpha-3 standards
 }
+```
 
 4) Default Locale: Use Function
 ```js
@@ -119,6 +122,7 @@ Returns a promise with an object of the form -
 	coutryName: string;		//Country display name as given by android
 	countryCode: string;	//Country code according to ISO 3166-1 alpha-3 standards
 }
+```
 
 5) Current Locale: Use Function
 ```js
@@ -133,6 +137,8 @@ Returns a promise with an object of the form -
 	coutryName: string;		//Country display name as given by android
 	countryCode: string;	//Country code according to ISO 3166-1 alpha-3 standards
 }
+```
+
 
 6) All Available Voices: Use function
 ```js
@@ -148,6 +154,7 @@ Returns a promise with an object of the form -
 	coutryName: string;		//Country display name as given by android
 	countryCode: string;	//Country code according to ISO 3166-1 alpha-3 standards
 }
+```
 
 7) Current Voice: Use function
 ```js
@@ -163,6 +170,8 @@ Returns a promise with an object of the form -
 	coutryName: string;		//Country display name as given by android
 	countryCode: string;	//Country code according to ISO 3166-1 alpha-3 standards
 }
+```
+
 
 ### Set Speech Attributes
 
@@ -175,6 +184,7 @@ AndroidTextToSpeech.setDefaultLangauge(languageCode);
 to set the language/locale to be used by the engine. Where 'languageCode' is in the format of ISO 639-2 standards.
 Returns a promise with either "success" or with error depending on the language being found.
 
+
 2) Pitch: Use function
 ```js
 AndroidTextToSpeech.setDefaultPitch(pitch);
@@ -182,12 +192,14 @@ AndroidTextToSpeech.setDefaultPitch(pitch);
 to set the voice pitch to be used by the engine. Where 'pitch' is speech pitch. 1.0 is the normal pitch, lower values lower the tone of the synthesized voice, greater values increase it.
 Returns a promise with "success".
 
+
 3) Speech Rate: Use function
 ```js
 AndroidTextToSpeech.setDefaultSpeechRate(speechRate);
 ```
 to set the playback speed to be used by the engine. Where 'speechRate' is speech rate. 1.0 is the normal speech rate, lower values slow down the speech (0.5 is half the normal speech rate), greater values accelerate it (2.0 is twice the normal speech rate).
 Returns a promise with "success".
+
 
 ### Events
 

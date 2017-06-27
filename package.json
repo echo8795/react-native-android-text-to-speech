@@ -1,0 +1,25 @@
+
+{
+  "name": "react-native-android-text-to-speech",
+  "version": "1.0.0",
+  "description": "React Native Text-To-Speech wrapper module for android",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "tts",
+    "text-to-speech",
+    "android",
+    "react",
+    "wrapper",
+    "voice",
+    "speech"
+  ],
+  "author": "Sarthak Saini",
+  "license": ""
+}

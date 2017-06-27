@@ -1,14 +1,11 @@
-
 {
   "name": "react-native-android-text-to-speech",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Native Text-To-Speech wrapper module for android",
   "main": "index.js",
   "repository": {
     "type": "git",
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "url": "git+https://github.com/echo8795/react-native-android-text-to-speech.git"
   },
   "keywords": [
     "react-native",
@@ -18,8 +15,13 @@
     "react",
     "wrapper",
     "voice",
-    "speech"
+    "speech",
+    "tts-android"
   ],
   "author": "Sarthak Saini",
-  "license": ""
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/echo8795/react-native-android-text-to-speech/issues"
+  },
+  "homepage": "https://github.com/echo8795/react-native-android-text-to-speech#readme"
 }

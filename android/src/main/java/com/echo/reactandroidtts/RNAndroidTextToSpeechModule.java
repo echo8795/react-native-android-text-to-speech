@@ -30,7 +30,7 @@ public class RNAndroidTextToSpeechModule extends ReactContextBaseJavaModule {
 	private static TextToSpeech tts;
 	private boolean IS_READY;
 
-	private static IS_DUCKING = false;
+	private static boolean IS_DUCKING = false;
 	private AudioManager audioManager;
 	private AudioManager.OnAudioFocusChangeListener afChangeListener;
 

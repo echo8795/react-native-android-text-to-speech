@@ -328,6 +328,7 @@ public class RNAndroidTextToSpeechModule extends ReactContextBaseJavaModule {
 		WritableMap localeData = Arguments.createMap();
 		localeData.putString("languageName", locale.getDisplayName());
 		localeData.putString("languageCode", locale.getISO3Language());
+		localeData.putString("languageString", locale.toString());
 		localeData.putString("countryName", locale.getDisplayCountry());
 		localeData.putString("countryCode", locale.getISO3Country());
 
@@ -339,6 +340,7 @@ public class RNAndroidTextToSpeechModule extends ReactContextBaseJavaModule {
 		voiceData.putString("voiceName", voice.getName());
 		voiceData.putString("languageName", voice.getLocale().getDisplayLanguage());
 		voiceData.putString("languageCode", voice.getLocale().getISO3Language());
+		voiceData.putString("languageString", voice.getLocale().toString());
 		voiceData.putString("countryName", voice.getLocale().getDisplayCountry());
 		voiceData.putString("countryCode", voice.getLocale().getISO3Country());
 

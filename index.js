@@ -59,7 +59,15 @@ class AndroidTextToSpeech extends NativeEventEmitter {
 
 	stop() {
 		return RNAndroidTextToSpeech.stop();
-	}	
+	}
+
+	addEventListener(type, handler) {
+		this.addListener(type, handler);
+	}
+
+	removeEventLister(type, handler) {
+		this.removeListener(type, handler);
+	}
 }
 
 export default new AndroidTextToSpeech();

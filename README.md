@@ -208,7 +208,7 @@ Subscibe to TTS events.
 ```js
 AndroidTextToSpeech.addEventListener('tts-start', (event) => console.log("start", event));
 AndroidTextToSpeech.addEventListener('tts-finish', (event) => console.log("finish", event));
-AndroidTextToSpeech.addEventListener('tts-cancel', (event) => console.log("cancel", event));
+AndroidTextToSpeech.addEventListener('tts-error', (event) => console.log("error", event));
 ```
 
 ### Example Code

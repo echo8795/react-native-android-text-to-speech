@@ -6,7 +6,7 @@ const RNAndroidTextToSpeech = NativeModules.AndroidTextToSpeech;
 class AndroidTextToSpeech extends NativeEventEmitter {
 
 	constructor() {
-		super(TextToSpeech);
+		super(AndroidTextToSpeech);
 	}
 
 	getAvailableLocales() {
@@ -54,7 +54,11 @@ class AndroidTextToSpeech extends NativeEventEmitter {
 	}
 
 	speak(utterance, queueMode) {
-		return RNAndroidTextToSpeech.speak(languageCode);
+		return RNAndroidTextToSpeech.speak(utterance, queueMode);
+	}
+
+	speakWithLocale(utterance, queueMode, languageCode) {
+		return RNAndroidTextToSpeech.speakWithLocale(utterance, queueMode, languageCode);
 	}
 
 	stop() {
@@ -65,7 +69,7 @@ class AndroidTextToSpeech extends NativeEventEmitter {
 		this.addListener(type, handler);
 	}
 
-	removeEventLister(type, handler) {
+	removeEventListener(type, handler) {
 		this.removeListener(type, handler);
 	}
 }

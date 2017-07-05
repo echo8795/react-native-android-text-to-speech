@@ -110,8 +110,70 @@ public class RNAndroidTextToSpeechModule extends ReactContextBaseJavaModule {
 		if(speakResult == TextToSpeech.SUCCESS) {
 			promise.resolve(utteranceId);
 		} else {
-			promise.reject("error", "Unable to play. Error at speak(String utterance, String queueMode)");
+			promise.reject("error", "Unable to play. Error at speak(utterance, queueMode)");
 		}
+	}
+
+	@ReactMethod
+	public void speakWithLocale(String utterance, String queueMode, String languageCode, Promise promise) {
+		if(notReady(promise)) return;
+
+		Locale defaultLocale, locale;
+		if(Build.VERSION.SDK_INT >= 21)	
+				defaultLocale = tts.getVoice().getLocale();
+			else 
+				defaultLocale = tts.getLanguage();
+
+		if(languageCode.indexOf("-") != -1) {
+			String[] parts = languageCode.split("-");
+			locale = new Locale(parts[0], parts[1]);
+		} else {
+			locale = new Locale(languageCode);
+		}
+
+		int resultForAvailability = tts.isLanguageAvailable(locale);
+		switch(resultForAvailability) {
+			case TextToSpeech.LANG_AVAILABLE:
+            case TextToSpeech.LANG_COUNTRY_AVAILABLE:
+            case TextToSpeech.LANG_COUNTRY_VAR_AVAILABLE:
+            	tts.setLanguage(locale);
+            	break;
+            case TextToSpeech.LANG_MISSING_DATA:
+            	promise.reject("not_found", "Language data is missing at speakWithLocale(utterance, queueMode, languageCode)");
+            	return;
+            case TextToSpeech.LANG_NOT_SUPPORTED:
+            	promise.reject("not_found", "Language is not supported at speakWithLocale(utterance, queueMode, languageCode)");
+            	return;
+            default:
+            	promise.reject("error", "Unkown error code at speakWithLocale(utterance, queueMode, languageCode)");
+            	return;
+		}		
+
+		if(IS_DUCKING) {
+			int amResult = audioManager.requestAudioFocus(afChangeListener,
+															AudioManager.STREAM_MUSIC, 
+															AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK);
+
+			if(amResult != AudioManager.AUDIOFOCUS_REQUEST_GRANTED)
+				promise.reject("error", "Android AudioMAnager error, failed to request audio focus");
+		}
+
+			String utteranceId = Integer.toString(utterance.hashCode());
+
+		int mode = TextToSpeech.QUEUE_ADD;
+		if(queueMode.equals("ADD"))
+			mode = TextToSpeech.QUEUE_ADD;
+		else if(queueMode.equals("FLUSH"))
+			mode = TextToSpeech.QUEUE_FLUSH;
+
+		int speakResult = speak(utterance, mode, utteranceId);
+		if(speakResult == TextToSpeech.SUCCESS) {
+			promise.resolve(utteranceId);
+		} else {
+			promise.reject("error", "Unable to play. Error at speak(utterance, queueMode, languageCode");
+		}
+		
+		tts.setLanguage(defaultLocale);
 	}
 
 	@ReactMethod
